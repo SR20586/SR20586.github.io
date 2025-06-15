@@ -1,221 +1,263 @@
 <!DOCTYPE html>
-        <html>
-        <head>
-            <meta charset="UTF-8">
-            <title>&#x6d3b;&#x52d5;&#x5831;&#x544a;&#x8a73;&#x7d30;</title>
-            <style>
-/* From extension vscode.github */
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>活動報告詳細</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+    <style>
+        /* Base styles for the body */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern, clean font stack */
+            font-size: 16px; /* Slightly larger base font size */
+            line-height: 1.6;
+            color: #333; /* Darker text for better contrast */
+            background-color: #f4f7f6; /* Light gray background */
+            margin: 0;
+            padding: 20px; /* Add some padding around the content */
+            display: flex;
+            justify-content: center; /* Center the content */
+        }
 
-.vscode-dark img[src$=\#gh-light-mode-only],
-.vscode-light img[src$=\#gh-dark-mode-only],
-.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
-.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
-	display: none;
-}
+        /* Container for the main content to limit width */
+        .container {
+            max-width: 900px; /* Max width for readability */
+            width: 100%;
+            background-color: #ffffff; /* White background for the content area */
+            padding: 30px;
+            border-radius: 8px; /* Slightly rounded corners */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Soft shadow for depth */
+        }
 
-</style>
-            
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
-<style>
+        /* Headings */
+        h1, h2, h3 {
+            color: #2c3e50; /* Dark blue-gray for headings */
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            border-bottom: 1px solid #eee; /* Subtle line under headings */
+            padding-bottom: 0.3em;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            border-bottom: 2px solid #3498db; /* More prominent line for H1 */
+            padding-bottom: 0.5em;
+            margin-bottom: 1em;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: #34495e;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: #34495e;
+        }
+
+        /* Horizontal rule */
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 2em 0;
+        }
+
+        /* Lists */
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        /* Images */
+        img {
+            max-width: 100%; /* Ensure images are responsive */
+            height: auto;
+            display: block; /* Remove extra space below image */
+            margin: 20px auto; /* Center images and add vertical spacing */
+            border-radius: 6px; /* Slightly rounded corners for images */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for images */
+            transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+        }
+
+        img:hover {
+            transform: scale(1.02); /* Slightly enlarge image on hover */
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow for tables */
+            border-radius: 6px;
+            overflow: hidden; /* Ensures rounded corners are visible */
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #3498db; /* Blue header background */
+            color: #ffffff; /* White text for headers */
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9; /* Light gray for even rows */
+        }
+
+        tr:hover {
+            background-color: #f1f1f1; /* Highlight row on hover */
+        }
+
+        /* Links */
+        a {
+            color: #3498db; /* Blue links */
+            text-decoration: none; /* No underline by default */
+            transition: color 0.2s ease-in-out;
+        }
+
+        a:hover {
+            text-decoration: underline; /* Underline on hover */
+            color: #2980b9; /* Slightly darker blue on hover */
+        }
+
+        /* Markdown alerts (keeping the original styles but ensuring they fit) */
+        .markdown-alert {
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
+            border-radius: 0.35rem;
+            border-left: .35em solid;
+            font-size: 0.95em;
+        }
+
+        /* Specific alert colors can remain as defined by markdown.css or be customized further */
+        .markdown-alert.markdown-alert-note { border-left-color: #0969da; background-color: #eaf2fa; }
+        .markdown-alert.markdown-alert-tip { border-left-color: #1a7f37; background-color: #e6f6e8; }
+        .markdown-alert.markdown-alert-warning { border-left-color: #9a6700; background-color: #fffbe6; }
+        .markdown-alert.markdown-alert-caution { border-left-color: #d1242f; background-color: #ffebe9; }
+        .markdown-alert.markdown-alert-important { border-left-color: #8250df; background-color: #f5effe; }
+
+        .markdown-alert .markdown-alert-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Utility classes (from original VSCode markdown styles) */
+        .vscode-dark img[src$=\#gh-light-mode-only],
+        .vscode-light img[src$=\#gh-dark-mode-only],
+        .vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+        .vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+            display: none;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
             body {
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
-                font-size: 14px;
-                line-height: 1.6;
+                padding: 15px;
             }
-        </style>
-        <style>
-.task-list-item {
-    list-style-type: none;
-}
-
-.task-list-item-checkbox {
-    margin-left: -20px;
-    vertical-align: middle;
-    pointer-events: none;
-}
-</style>
-<style>
-:root {
-  --color-note: #0969da;
-  --color-tip: #1a7f37;
-  --color-warning: #9a6700;
-  --color-severe: #bc4c00;
-  --color-caution: #d1242f;
-  --color-important: #8250df;
-}
-
-</style>
-<style>
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-note: #2f81f7;
-    --color-tip: #3fb950;
-    --color-warning: #d29922;
-    --color-severe: #db6d28;
-    --color-caution: #f85149;
-    --color-important: #a371f7;
-  }
-}
-
-</style>
-<style>
-.markdown-alert {
-  padding: 0.5rem 1rem;
-  margin-bottom: 16px;
-  color: inherit;
-  border-left: .25em solid #888;
-}
-
-.markdown-alert>:first-child {
-  margin-top: 0
-}
-
-.markdown-alert>:last-child {
-  margin-bottom: 0
-}
-
-.markdown-alert .markdown-alert-title {
-  display: flex;
-  font-weight: 500;
-  align-items: center;
-  line-height: 1
-}
-
-.markdown-alert .markdown-alert-title .octicon {
-  margin-right: 0.5rem;
-  display: inline-block;
-  overflow: visible !important;
-  vertical-align: text-bottom;
-  fill: currentColor;
-}
-
-.markdown-alert.markdown-alert-note {
-  border-left-color: var(--color-note);
-}
-
-.markdown-alert.markdown-alert-note .markdown-alert-title {
-  color: var(--color-note);
-}
-
-.markdown-alert.markdown-alert-important {
-  border-left-color: var(--color-important);
-}
-
-.markdown-alert.markdown-alert-important .markdown-alert-title {
-  color: var(--color-important);
-}
-
-.markdown-alert.markdown-alert-warning {
-  border-left-color: var(--color-warning);
-}
-
-.markdown-alert.markdown-alert-warning .markdown-alert-title {
-  color: var(--color-warning);
-}
-
-.markdown-alert.markdown-alert-tip {
-  border-left-color: var(--color-tip);
-}
-
-.markdown-alert.markdown-alert-tip .markdown-alert-title {
-  color: var(--color-tip);
-}
-
-.markdown-alert.markdown-alert-caution {
-  border-left-color: var(--color-caution);
-}
-
-.markdown-alert.markdown-alert-caution .markdown-alert-title {
-  color: var(--color-caution);
-}
-
-</style>
-        
-        </head>
-        <body class="vscode-body vscode-light">
-            <h1 id="活動報告詳細">活動報告詳細</h1>
-<hr>
-<h2 id="arゲームについて">ARゲームについて</h2>
-<ul>
-<li>
-<p>スコアを実装し、敵を１体倒すにつき100加算するようにしました。</p>
-</li>
-<li>
-<p>ゲーム画面を大幅に変更し、より画面が表示されるようにしました。</p>
-</li>
-</ul>
-<img src="https://sr20586.github.io/image-10.png" width="50%">
-<ul>
-<li>ボスを追加し、そのモデリングをblenderで制作しました。</li>
-</ul>
-<img src="https://sr20586.github.io/image-11.png" width="50%">
-<ul>
-<li>通常の敵にはblenderでアニメーションを勉強という名目で追加しました。</li>
-</ul>
-<img src="https://sr20586.github.io/image-9.png" width="50%">
-<h2 id="github-desktopについてのパワポ">github desktopについてのパワポ</h2>
-<img src="https://sr20586.github.io/image-1.png" width="50%">
-<ul>
-<li>１，２年を対象としたgithub desktopを用いてunityのバージョン管理の方法を記したものです。近々講習をやりたいと思っています。</li>
-</ul>
-<h3 id="予定">予定</h3>
-<table>
-<thead>
-<tr>
-<th>１年生</th>
-<th>２年生</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>まだgitを知らない人もいるかもしれないので  githubとはというところから丁寧に説明する</td>
-<td>最初からgithub desktopをインストールさせる</td>
-</tr>
-<tr>
-<td>未定</td>
-<td>未定</td>
-</tr>
-</tbody>
-</table>
-<h2 id="meta-questのunity使い方ガイド">Meta Questのunity使い方ガイド</h2>
-<img src="https://sr20586.github.io/image-6.png" width="50%">
-<ul>
-<li>これは未完成でこれをそのまま実行してもうまくいきません。新しく作り直します。</li>
-</ul>
-<h2 id="adb環境の導入方法のパワポ">adb環境の導入方法のパワポ</h2>
-<img src="https://sr20586.github.io/image-7.png" width="50%">
-<ul>
-<li>Meta Questでunityのゲームを作る際に必要になる作業なので別にまとめました。</li>
-</ul>
-<h2 id="新ゲームの草案ストーリーのみ">新ゲームの草案（ストーリーのみ）</h2>
-<img src="https://sr20586.github.io/image-8.png" width="50%">
-<ul>
-<li>一応、ストーリーRPGにする予定でいます。</li>
-</ul>
-<h2 id="体験入部についてのあれこれ">体験入部についてのあれこれ</h2>
-<h3 id="パワポ">パワポ</h3>
-<img src="https://sr20586.github.io/image-2.png" width="50%">
-<ul>
-<li>あんまり時間かけて作ってない物なので、アドリブのところがいくつもありました。</li>
-</ul>
-<h3 id="代役の台本">代役の台本</h3>
-<img src="https://sr20586.github.io/image-3.png" width="50%">
-<ul>
-<li>体験入部の最終日に来れなくなったので、代役のために資料に則った台本を作りました。</li>
-</ul>
-<h2 id="まとめ">まとめ</h2>
-<p>この１か月間いろいろとやってきましたが、unityよりもパワポやワードといったことに時間を割いてしまっていたため、次からはunityに切り替えていきたい。<s>あと企画書書かないとね</s></p>
-<h2 id="ソースコード">ソースコード</h2>
-<p><a href="https://github.com/SR20586/SR20586.github.io">markdown sourthcode</a></p>
-<h3 id="書類のダウンロード先">書類のダウンロード先</h3>
-<p><a href="https://github.com/SR20586/katudou_file">katudou_file</a></p>
-
-            
-            
-        </body>
-        </html>
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body class="vscode-body vscode-light">
+    <div class="container"> <h1 id="活動報告詳細">活動報告詳細</h1>
+        <hr>
+        <h2 id="arゲームについて">ARゲームについて</h2>
+        <ul>
+            <li>
+                <p>スコアを実装し、敵を１体倒すにつき100加算するようにしました。</p>
+            </li>
+            <li>
+                <p>ゲーム画面を大幅に変更し、より画面が表示されるようにしました。</p>
+            </li>
+        </ul>
+        <img src="https://sr20586.github.io/image-10.png" width="50%">
+        <ul>
+            <li>ボスを追加し、そのモデリングをblenderで制作しました。</li>
+        </ul>
+        <img src="https://sr20586.github.io/image-11.png" width="50%">
+        <ul>
+            <li>通常の敵にはblenderでアニメーションを勉強という名目で追加しました。</li>
+        </ul>
+        <img src="https://sr20586.github.io/image-9.png" width="50%">
+        <h2 id="github-desktopについてのパワポ">github desktopについてのパワポ</h2>
+        <img src="https://sr20586.github.io/image-1.png" width="50%">
+        <ul>
+            <li>１，２年を対象としたgithub desktopを用いてunityのバージョン管理の方法を記したものです。近々講習をやりたいと思っています。</li>
+        </ul>
+        <h3 id="予定">予定</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>１年生</th>
+                    <th>２年生</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>まだgitを知らない人もいるかもしれないので githubとはというところから丁寧に説明する</td>
+                    <td>最初からgithub desktopをインストールさせる</td>
+                </tr>
+                <tr>
+                    <td>未定</td>
+                    <td>未定</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 id="meta-questのunity使い方ガイド">Meta Questのunity使い方ガイド</h2>
+        <img src="https://sr20586.github.io/image-6.png" width="50%">
+        <ul>
+            <li>これは未完成でこれをそのまま実行してもうまくいきません。新しく作り直します。</li>
+        </ul>
+        <h2 id="adb環境の導入方法のパワポ">adb環境の導入方法のパワポ</h2>
+        <img src="https://sr20586.github.io/image-7.png" width="50%">
+        <ul>
+            <li>Meta Questでunityのゲームを作る際に必要になる作業なので別にまとめました。</li>
+        </ul>
+        <h2 id="新ゲームの草案ストーリーのみ">新ゲームの草案（ストーリーのみ）</h2>
+        <img src="https://sr20586.github.io/image-8.png" width="50%">
+        <ul>
+            <li>一応、ストーリーRPGにする予定でいます。</li>
+        </ul>
+        <h2 id="体験入部についてのあれこれ">体験入部についてのあれこれ</h2>
+        <h3 id="パワポ">パワポ</h3>
+        <img src="https://sr20586.github.io/image-2.png" width="50%">
+        <ul>
+            <li>あんまり時間かけて作ってない物なので、アドリブのところがいくつもありました。</li>
+        </ul>
+        <h3 id="代役の台本">代役の台本</h3>
+        <img src="https://sr20586.github.io/image-3.png" width="50%">
+        <ul>
+            <li>体験入部の最終日に来れなくなったので、代役のために資料に則った台本を作りました。</li>
+        </ul>
+        <h2 id="まとめ">まとめ</h2>
+        <p>この１か月間いろいろとやってきましたが、unityよりもパワポやワードといったことに時間を割いてしまっていたため、次からはunityに切り替えていきたい。<s>あと企画書書かないとね</s></p>
+        <h2 id="ソースコード">ソースコード</h2>
+        <p><a href="https://github.com/SR20586/SR20586.github.io">markdown sourthcode</a></p>
+        <h3 id="書類のダウンロード先">書類のダウンロード先</h3>
+        <p><a href="https://github.com/SR20586/katudou_file">katudou_file</a></p>
+    </div>
+</body>
+</html>
